@@ -2,12 +2,12 @@ package com.qiyestore.grails.plugin.admin_web
 
 class TUser {
 
-	def static Integer STATUS_NOACTIVE = 0 //未激活
-	def static Integer STATUS_USE = 1;//正常使用(已激活)
-	def static Integer STATUS_EXPIRE = -1;//到期 开发者账号到期
-	def static Integer STATUS_LOCK = -2;//锁定
-	def static Integer STATUS_DELETE = -3;//已删除
-	
+	static final int STATUS_NOACTIVE = 0 //未激活
+	static final int STATUS_USE = 1//正常使用(已激活)
+	static final int STATUS_EXPIRE = -1//到期 开发者账号到期
+	static final int STATUS_LOCK = -2//锁定
+	static final int STATUS_DELETE = -3//已删除
+
 
 	String username
 	String name
@@ -22,10 +22,10 @@ class TUser {
 	Date lastUpdated
 	Long lastLoginTime
 	String lastRemoteIp
-	String icon;
+	String icon
 	Long createdById
 	Long accountExpiredTime
-	
+
 	static constraints = {
 
 		username blank: false, unique: true
@@ -45,7 +45,7 @@ class TUser {
 		lastUpdated(nullable:true)
 	}
 
-	static mapping = { 
+	static mapping = {
 		version false
 		cache true
 	}
@@ -56,21 +56,20 @@ class TUser {
 	}
 
 	String toString() {
-		"${username}"
+		username
 	}
 
 	boolean getAccountEnabled() {
 
-		def bool = enabled;
-		if(bool){
-			if(accountExpiredTime){
-				def nowTimes = (new Date()).getTime();
-				if(nowTimes > accountExpiredTime){
-					bool = false;
-				}
-			}
+		if (!enabled) {
+			return false
 		}
-		return bool;
+
+		if(accountExpiredTime && System.currentTimeMillis() > accountExpiredTime){
+			return false
+		}
+
+		return true
 	}
-	
+
 }

@@ -8,15 +8,15 @@
     <ul class="dropdown-menu">
         <!-- User image  F905v2S5YI-->
         <li class="user-header bg-light-blue">
-            
+
             <img src="${currentUser?.icon ?: assetPath(src: 'admin/AdminLTE/avatar3.png')}" class="img-circle" alt="User Image" />
-            
+
             <p>
                 ${currentUser?.nickname}
                 <small>创建于： <g:formatDate format="yyyy年MM月dd日" date="${currentUser?.dateCreated}" /></small>
             </p>
         </li>
-        <!-- Menu Body 
+        <!-- Menu Body
         <li class="user-body">
             <div class="col-xs-4 text-center">
                 <a href="#">Followers</a>

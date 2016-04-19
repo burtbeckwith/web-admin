@@ -1,11 +1,10 @@
-<!DOCTYPE html>
 <html>
     <head>
         <meta name="layout" content="admin"/>
         <title>模块管理</title>
     </head>
     <body subtitle="编辑信息">
-        
+
         <div class="row">
             <div class="col-md-6">
 
@@ -39,7 +38,7 @@
                             </div>
 
                         </div><!-- /.box-body -->
-                        
+
                         <div class="box-footer subBtn">
                              <button type="button"  data-loading-text="正在保存..."  onclick="$(this).button('loading');$('#userForm').submit();" class="btn btn-primary pull-right margin" autocomplete="off"><i class="fa fa-save"></i> 保存</button>
 
@@ -49,31 +48,31 @@
                 </div>
             </div>
         </div>
-       
-        
+
+
         <asset:javascript src="admin/jquery.form.min.js" />
-        
-        
+
+
         <script type="text/javascript">
 
-            
+
             $(document).ready(function() {
                 loadAjaxForm();
             });
 
 
-            
+
             function loadAjaxForm(){
                 var options = {
                         dataType:"text",
                         type:"post",
                         beforeSubmit : function(arr, $form, options) {
-                        
+
                         //去除错误样式
                         cleanFormErrors();
-                    
+
                         var bool = true;
-                        
+
                         var name = $("#name").val();
 
                         if(name==""){
@@ -109,11 +108,11 @@
                             abox("error","操作失败！");
                        }
                     }
-                }; 
+                };
                 $('#userForm').ajaxForm(options);
             }
 
-            
+
 
         </script>
     </body>

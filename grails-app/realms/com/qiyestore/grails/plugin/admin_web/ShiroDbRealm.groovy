@@ -35,15 +35,15 @@ class ShiroDbRealm {
             throw new UnknownAccountException("No account found for user [${username}]")
         }
 
-        def nowDate = new Date();
-        if(user.accountExpiredTime && user.accountExpiredTime < nowDate.getTime()){
-            throw new LockedAccountException("账号已经到期！");
+        long nowMillis = System.currentTimeMillis()
+        if(user.accountExpiredTime && user.accountExpiredTime < nowMillis){
+            throw new LockedAccountException("账号已经到期！")
         }
 
-        def enabled = user.enabled;
+        def enabled = user.enabled
         if(!enabled){
 
-            throw new LockedAccountException ("账号被锁定！");
+            throw new LockedAccountException ("账号被锁定！")
         }
 
         log.info "Found user '${user.username}' in DB"
@@ -55,42 +55,39 @@ class ShiroDbRealm {
             log.info "Invalid password (DB realm)"
             throw new IncorrectCredentialsException("Invalid password for user '${username}'")
         }
-        
-        UserSecurity.initUser(user);
+
+        UserSecurity.initUser(user)
         return account
     }
 
     def hasRole(principal, roleName) {
-         return UserSecurity.hasRole(roleName);
+         return UserSecurity.hasRole(roleName)
     }
-    
-    
-    
+
+
+
     def isPermitted(principal, requiredPermission) {
-        
-        def permissions = UserSecurity.getAllPermission();
+
+        def permissions = UserSecurity.getAllPermission()
         //println "principal="+principal;
         //println "userPerm="+permissions;
         //println "requiredPermission="+requiredPermission;
-        
+
         //permissions = permissions.split(",");
-        
+
         //return true;
-        
-        
-        def retval = false;
+
+
         if(permissions){
-            permissions?.each{ permString ->
+            for (permString in permissions) {
                 def perm = shiroPermissionResolver.resolvePermission(permString)
                 if (perm.implies(requiredPermission)) {
-                    retval = true;
-                    return;
+                    return true
                 }
             }
         }
-        //println "retval="+retval;
-        return retval
-        
-        
+        return false
+
+
     }
 }

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
     <head>
         <meta name="layout" content="admin"/>
@@ -6,26 +5,26 @@
         <asset:stylesheet src="admin/ztree/zTreeStyle" />
     </head>
     <body subtitle="角色信息">
-        
+
         <div class="row">
             <div class="col-md-6">
                 <div class="box box-primary">
                     <form name="roleForm" id="roleForm" action="${request.contextPath}/user/roleSave" method="POST">
                         <div class="box-body">
                             <input type="hidden" name="id" id="id" value="${role?.id}" />
-                            
+
                             <input type="hidden" id="treeJson" name="treeJson" value="${treeJson}"/>
 
                             <input type="hidden" name="rs" id="rs" value="" />
                             <div class="form-group">
                                 <label for="authority">角色名称</label>
-                                
+
                                 <input class="form-control" id="authority" value="${role?.authority}" name="authority" type="text" placeholder="角色名称">
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="comment">备注</label>
-                                
+
                                 <input class="form-control" id="comment" value="${role?.comment}" name="comment" type="text" placeholder="备注">
                             </div>
 
@@ -42,7 +41,7 @@
                             <div class="form-group">
                                 <label for="enabled">权限</label>
                                 <div id="treeDemo" class="ztree">
-                                    
+
                                 </div>
                             </div>
                         </div><!-- /.box-body -->
@@ -57,14 +56,14 @@
                 </div>
             </div>
         </div>
-        
+
         <asset:javascript src="admin/jquery.form.min.js" />
-        
+
         <asset:javascript src="admin/ztree/jquery.ztree.core-3.5.min.js" />
         <asset:javascript src="admin/ztree/jquery.ztree.excheck-3.5.min.js" />
-        
+
         <script type="text/javascript">
-            
+
             $(document).ready(function() {
                 loadAjaxForm();
 
@@ -101,7 +100,7 @@
                         }
                     }
                     $("#rs").val(rs);
-                    
+
                     $(document.forms[0]).submit();
                 }
 
@@ -112,7 +111,7 @@
                         type:"post",
                         beforeSubmit : function(arr, $form, options) {
                         var bool = true;
-                        
+
                         //去除错误样式
                         cleanFormErrors();
 
@@ -154,7 +153,7 @@
                             abox("error","操作失败！");
                        }
                     }
-                }; 
+                };
                 $('#roleForm').ajaxForm(options);
             }
 

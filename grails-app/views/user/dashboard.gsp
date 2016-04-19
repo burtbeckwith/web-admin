@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="admin"/>
@@ -12,9 +11,9 @@
           使用企用，一年买车，两年买房不再是梦。
       </p>
     </div>
-    
+
     <div>
-      
+
     <div class="row" >
 
       <!-- ios -->
@@ -33,7 +32,7 @@
       </div>
 
     </div>
-    
+
     <div class="row">
       <div class="col-md-6 col-xs-12">
         <div class="box box-primary">
@@ -68,7 +67,7 @@
         </div>
       </div>
     </div>
-    
+
     </div>
     <asset:javascript src="admin/AdminLTE/morris/morris.min.js" />
 	</body>

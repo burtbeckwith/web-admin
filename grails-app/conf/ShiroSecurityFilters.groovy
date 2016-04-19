@@ -8,10 +8,10 @@ class ShiroSecurityFilters {
     def filters = {
         all(controller:'*', action:'*') {
             before = {
-                
+
                 // Ignore direct views (e.g. the default main index page).
                 if (!controllerName || controllerName == 'assets') return true
-                accessControl();
+                accessControl()
             }
         }
     }

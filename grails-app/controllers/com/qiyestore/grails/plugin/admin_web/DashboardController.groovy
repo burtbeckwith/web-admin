@@ -1,6 +1,5 @@
 package com.qiyestore.grails.plugin.admin_web
 
-
 class DashboardController {
 
 	def index() {
@@ -10,7 +9,7 @@ class DashboardController {
 		def listBoxes = TDashboardBox.createCriteria().list {
 			eq('type', TDashboardBox.TYPE_LISTBOX)
 		}
-		render view:'/dashboard/index', model:[countBoxes:countBoxes, listBoxes:listBoxes]
+		[countBoxes:countBoxes, listBoxes:listBoxes]
 	}
 
 	def countAllUser() {
@@ -20,12 +19,11 @@ class DashboardController {
 				rowCount()
 			}
 		}
-		render view:'/dashboard/countAllUser', model:[userCount: userCount, link: '/user/userList']
+		[userCount: userCount, link: '/user/userList']
 	}
 
 	def listSystemMessage() {
 		// FOR TEST
-		render view:'/dashboard/listSystemMessage', model:[]
 	}
 
 
@@ -33,6 +31,6 @@ class DashboardController {
 		def userLogs = TUserLog.createCriteria().list(max:5) {
 			order('id','desc')
 		}
-		render view:'/dashboard/listUserLog', model:[userLogs: userLogs]	
+		[userLogs: userLogs]
 	}
 }

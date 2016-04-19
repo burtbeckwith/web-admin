@@ -8,7 +8,7 @@
     </a>
   </li>
 
-  
+
   <shiro:hasAnyRole in="${["ROLE_ADMIN"]}">
   <g:set var="menu_usermgr" value="${controllerName== 'user' && actionName!='dashboard'}" />
   <li class="treeview ${menu_usermgr ?'active':''}"  >
@@ -23,14 +23,14 @@
       <li class="${controllerName== 'user' && actionName.indexOf('module') > -1 ?'active':''}">
         <a style="margin-left: 10px;" href="${request.contextPath}/user/moduleList"><i class="fa fa-folder-o"></i> 模块</a>
       </li>
-      
+
       <li class="${controllerName== 'user' && actionName.indexOf('role') > -1 ?'active':''}">
         <a style="margin-left: 10px;" href="${request.contextPath}/user/roleList"><i class="fa fa-male"></i> 角色</a>
       </li>
     </ul>
   </li>
   </shiro:hasAnyRole>
-  
+
   <g:include view="/leftmenu/customMenu.gsp" />
 
 </ul>

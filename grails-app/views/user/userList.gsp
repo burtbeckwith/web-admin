@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="admin"/>
@@ -22,14 +21,14 @@
 
                         <div class="form-group">
                             <label for="appName">角色</label>
-                            
+
                             <select class="form-control" id="roleId" name="roleId">
                                <option value="">--选择角色--</option>
                                <g:each in="${roles}" var="role">
                                     <option value="${role.id}" <g:if test="${params.roleId == role.id}"> selected="selected" </g:if> >${role.authority}</option>
                                </g:each>
                             </select>
-                            
+
                         </div>
 
                         <button type="button"   onclick="$('#searchForm').submit()" class="btn btn-default"><i class="fa fa-search"></i> 查询</button>
@@ -86,7 +85,7 @@
                                 <button class="btn btn-default btn-sm" onclick="delUser(${user.id},'${user.name}')">
                                     <i class="fa fa-remove"></i>删除
                                 </button>
-                            
+
                             </td>
                         </tr>
                     </g:each>

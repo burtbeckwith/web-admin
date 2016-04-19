@@ -15,7 +15,7 @@ if (typeof jQuery !== 'undefined') {
 * 提示表单错误信息
 */
 function showFormErrors(obj,msg){
-	
+
 	$(obj).parent().addClass("has-error");
 	abox("error",msg);
 }
@@ -24,25 +24,25 @@ function showFormErrors(obj,msg){
 * 清除所有表单的错误信息
 */
 function cleanFormErrors(){
-	
+
 	$("div.has-error").removeClass("has-error");
-}	
+}
 
 
-function checkNumber(value){    
-	var reg = /^((\d+)|(-\d+))$/;    
-	if(!reg.test($.trim(value))){    
-		return false;    
-	}    
-	return true;    
+function checkNumber(value){
+	var reg = /^((\d+)|(-\d+))$/;
+	if(!reg.test($.trim(value))){
+		return false;
+	}
+	return true;
 }
 
 
 function checkPrice(value){
 	var reg = /^((\d+)|(\d+.\d+))$/;
-	if(!reg.test($.trim(value))){    
-		return false;    
-	}    
+	if(!reg.test($.trim(value))){
+		return false;
+	}
 	return true;
 }
 
@@ -79,7 +79,7 @@ function goBack(){
 /* 系统弹出提示框
  * @author maqiankun
  * 参数 operate 提示类型 : sucess 成功 ，error 失败
- * 	       msg 提示内容 : 不写为默认值    
+ * 	       msg 提示内容 : 不写为默认值
  * callback 回调函数
  */
 function abox(operate,msg,callback){
@@ -99,7 +99,7 @@ function abox(operate,msg,callback){
 	 }else if(operate=='error'){
 	  C.children("h4").html(msg==''||msg==null?error:msg);
 	 }
-	 
+
 	 //设置提示框的位置
 	 var w = C.width();
 	 var l = ($win.width() - w) / 2;

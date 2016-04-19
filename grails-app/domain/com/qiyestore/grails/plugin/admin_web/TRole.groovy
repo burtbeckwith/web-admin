@@ -1,10 +1,7 @@
 package com.qiyestore.grails.plugin.admin_web
 
-import java.util.Date;
-
 class TRole {
 
-	
 	String authority
 	String comment
 	boolean enabled = true
@@ -12,9 +9,9 @@ class TRole {
 	Date lastUpdated
 	Long createdById
 
-	static mapping = { 
+	static mapping = {
 		version false
-		cache true 
+		cache true
 	}
 
 	static constraints = {
@@ -22,21 +19,20 @@ class TRole {
 		authority blank: false, unique: true
 		comment nullable:true
 	}
-	
+
 	String toString() {
 		authority
 	}
-	
+
 	/**
 	* Judge if the role can access the feature
 	* @param feature
 	* @return
 	*/
-   def hasFeature(def feature) {
-	   def result = 'false'
+   def hasFeature(feature) {
 	   if(feature.configAttribute.contains(authority)) {
-		   result = 'true'
+		   return 'true'
 	   }
-	   return result
+	   return 'false'
    }
 }

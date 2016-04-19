@@ -9,62 +9,62 @@ import org.apache.shiro.web.util.WebUtils
 class AuthController {
     def shiroSecurityManager
 
-    def index = { redirect(action: "login", params: params) }
+    static defaultAction = 'login'
 
-    def login = {
+    def login() {
         // println 'user login'
-        render(view: "/auth/login",model:[ username: params.username, rememberMe: (params.rememberMe != null), targetUri: params.targetUri ]);
-    } 
+        [ username: params.username, rememberMe: (params.rememberMe != null), targetUri: params.targetUri ]
+    }
 
-    def logout = {
+    def logout() {
         redirect action: 'signOut'
     }
-    
 
-    def signIn = {
-        
+
+    def signIn() {
+
         //println "==============="+params.username;
-        
+
         def authToken = new UsernamePasswordToken(params.username, params.password as String)
 
         // Support for "remember me"
         if (params.rememberMe) {
             authToken.rememberMe = true
         }
-        
+
         // If a controller redirected to this page, redirect back
         // to it. Otherwise redirect to the root URI.
-        def targetUri = "/";
-        
+        String targetUri = "/"
+
         // Handle requests saved by Shiro filters.
         SavedRequest savedRequest = WebUtils.getSavedRequest(request)
         if (savedRequest) {
             targetUri = savedRequest.requestURI - request.contextPath
             if (savedRequest.queryString) targetUri = targetUri + '?' + savedRequest.queryString
         }
-        
-        boolean loginFail = false;
+
+        boolean loginFail = false
         try{
-            
+
             //println "params.username="+params.username;
             //println "params.password="+params.password;
-            
+
             // Perform the actual login. An AuthenticationException
             // will be thrown if the username is unrecognised or the
             // password is incorrect.
             SecurityUtils.subject.login(authToken)
 
             log.info "Redirecting to '${targetUri}'."
-            
+
             //println "targetUri="+targetUri;
             redirect(uri: targetUri)
         }catch(LockedAccountException e){
-            flash.message = "${e.message}";
-            loginFail = true;
+            flash.message = "${e.message}"
+            loginFail = true
         }
         catch (AuthenticationException ex){
 
-            loginFail = true;
+            loginFail = true
             flash.message = "用户名密码错误！"
         }
 
@@ -85,18 +85,18 @@ class AuthController {
         }
     }
 
-    def signOut = {
+    def signOut() {
         // Log the user out of the application.
         SecurityUtils.subject?.logout()
         webRequest.getCurrentRequest().session = null
-        
+
         // For now, redirect back to the home page.
         redirect(uri: "/")
     }
 
-    def unauthorized = {
-        
-        println "no unauthorized";
+    def unauthorized() {
+
+        log.debug "no unauthorized"
         redirect(uri: "/500")
     }
 }

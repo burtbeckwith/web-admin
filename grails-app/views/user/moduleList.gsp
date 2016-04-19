@@ -1,11 +1,10 @@
-<!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="admin"/>
 		<title>模块管理</title>
 
 		<asset:stylesheet src="admin/ztree/zTreeStyle.css" />
-		
+
 	</head>
 	<body subtitle="模块列表">
 		<div class="row">
@@ -73,7 +72,7 @@
 	        var setting = {};
 	        var treeJson = $("#treeJson").val();
 
-			var zNodes =eval('('+treeJson+')'); 
+			var zNodes =eval('('+treeJson+')');
 	        $(document).ready(function(){
 				$.fn.zTree.init($("#treeDemo"), setting, zNodes);
 			});
@@ -83,18 +82,18 @@
 	        }
 
             function delModule(id,moduleName){
-	
+
 			if(confirm("您确定删除模块("+moduleName+")吗？")){
 				$.ajax({
 				    type: "POST",
 					url: app.contextPath + "/user/moduleDel",
 					data:{'id':id},
-					dataType:"text",					
+					dataType:"text",
 					success: function(data){
 				 		if(data=="success"){
 								abox("success","操作成功！",function (){
-				 				window.location.reload(); 
-				 			});	
+				 				window.location.reload();
+				 			});
 				 		}else if(data=="child"){
 				 			abox("error","该模块有子模块，请删除子模块后在操作!");
 					 	}
@@ -103,12 +102,12 @@
 			}
 		}
 
-		function checkNumber(value){    
-			var reg = /^((\d+)|(-\d+))$/;    
-			if(!reg.test($.trim(value))){    
-				return false;    
-			}    
-			return true;    
+		function checkNumber(value){
+			var reg = /^((\d+)|(-\d+))$/;
+			if(!reg.test($.trim(value))){
+				return false;
+			}
+			return true;
 		}
 
 		function checkIsNull(value){

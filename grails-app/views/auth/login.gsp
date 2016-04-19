@@ -22,7 +22,7 @@
             <div class="header bg-light-blue"><b><g:message code="admin-web.title" default="AdminWeb"/></b> v<g:meta name="app.version"/></div>
             <form action="signIn" method="post">
                 <div class="body bg-gray">
-                
+
                     <g:if test="${flash.message}">
                       <div class="message">${flash.message}</div>
                     </g:if>
@@ -46,6 +46,6 @@
 
         <asset:javascript src="jquery" />
         <script src="http://cdn.bootcss.com/bootstrap/3.3.1/js/bootstrap.min.js" type="text/javascript"></script>
-    
+
     </body>
 </html>

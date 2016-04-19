@@ -11,7 +11,7 @@
         <!-- Theme style -->
         <asset:stylesheet src="admin/AdminLTE/AdminLTE.css" />
  		%{-- <link href="${request.contextPath}/css/abox.css" rel="stylesheet" type="text/css" /> --}%
- 		            
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -89,14 +89,14 @@
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
 
-        
+
         <!-- Bootstrap -->
         <script src="http://cdn.bootcss.com/bootstrap/3.3.1/js/bootstrap.min.js" type="text/javascript"></script>
         <!-- AdminLTE App -->
         <asset:javascript src="admin/admin.js" />
         <asset:javascript src="admin/AdminLTE/app.js" />
         <asset:javascript src="admin/AdminLTE/holder.min.js" />
-        
+
         <plugin:isAvailable name="openapi-client">
         <!-- 加载OpenApiClient -->
         <asset:javascript src="openapi/openapi-client.js" />
@@ -113,4 +113,3 @@
 
     </body>
 </html>
-

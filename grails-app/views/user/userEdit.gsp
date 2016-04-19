@@ -1,11 +1,10 @@
-<!DOCTYPE html>
 <html>
     <head>
         <meta name="layout" content="admin"/>
         <title>用户管理</title>
     </head>
     <body subtitle="用户信息">
-        
+
         <div class="row">
             <div class="col-md-6">
 
@@ -87,10 +86,10 @@
                 </div>
             </div>
         </div>
-       
-        
+
+
         <asset:javascript src="admin/jquery.form.min.js"/>
-        
+
         <script type="text/javascript">
 
 
@@ -100,7 +99,7 @@
                 loadAjaxForm();
             });
 
-            
+
             //验证用户名
             function checkUsername(username){
                 var bool = true;
@@ -136,9 +135,9 @@
                         beforeSubmit : function(arr, $form, options) {
 
                         cleanFormErrors();
-                        
+
                         var bool = true;
-                        
+
                         var userId = $("#userId").val();
                         var username = $.trim($("#username").val());
                         var password = $.trim($("#password").val());
@@ -154,7 +153,7 @@
                                 showFormErrors($("#username"),"用户名已存在");
                                 bool = false;
                             }else if(password==""){
-                                
+
                                 showFormErrors($("#password"),"密码不能为空!");
                                 bool = false;
                             }
@@ -189,17 +188,15 @@
                                 var m = refererUrl.replace(/amp;/g,"");
                                 location.href=m;
                             });
-                            
+
                        }else{
-                            
+
                             abox("error","操作失败！");
                        }
                     }
-                }; 
+                };
                 $('#userForm').ajaxForm(options);
             }
-
-            
 
         </script>
     </body>

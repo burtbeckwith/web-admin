@@ -17,10 +17,10 @@
         <li><a href="${createLink(controller: controllerName, action: actionName,params: params << [offset: 0, max: max])}">首页</a></li>
         <li><a href="${createLink(controller: controllerName, action: actionName,params: params << [offset: (offset-max), max: max])}">« 上一页</a></li>
       </g:if>
-    	
+
     	<g:set var="minPageNum" value="${currentPageNum > 1 ? (currentPageNum - 1) : 1}" />
-    	<g:set var="maxPageNum" value="${minPageNum+2}" />	  	
-	  	
+    	<g:set var="maxPageNum" value="${minPageNum+2}" />
+
 		<g:if test="${maxPageNum>=totalPageNum-2}">
 			<g:set var="maxPageNum" value="${totalPageNum>0? totalPageNum: 1}" />
 			<g:set var="minPageNum" value="${minPageNum==1? minPageNum : (totalPageNum-4>0 ? totalPageNum-4 : 1)}" />
@@ -31,7 +31,7 @@
 	  	</g:each>
         <g:if test="${maxPageNum<totalPageNum}">
         	<li class="disable"><a>...</a></li>
-        	<li><a href="${createLink(controller: controllerName, action: actionName,params: params << [offset: (totalPageNum-1)*max, max: max])}">${totalPageNum}</a></li>	
+        	<li><a href="${createLink(controller: controllerName, action: actionName,params: params << [offset: (totalPageNum-1)*max, max: max])}">${totalPageNum}</a></li>
         </g:if>
         <g:if test="${totalPageNum > currentPageNum}"><li><a href="${createLink(controller: controllerName, action: actionName,params: params << [offset: (offset+max), max: max])}">下一页 »</a></li></g:if>
     </ul>

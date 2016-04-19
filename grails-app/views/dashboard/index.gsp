@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="admin"/>
@@ -11,20 +10,20 @@
           使用企用，一年买车，两年买房不再是梦。
       </p>
     </div>
-    
+
     <div class="row" >
-      <g:each var="cb" in="${countBoxes}"> 
+      <g:each var="cb" in="${countBoxes}">
       <!-- CountBox ${cb.title} -->
       <g:include controller="${cb.controllerName}" action="${cb.actionName}" />
       </g:each>
     </div>
-    
+
     <div class="row">
-      <g:each var="lb" in="${listBoxes}"> 
+      <g:each var="lb" in="${listBoxes}">
       <!-- ListBox ${lb.title} -->
       <g:include controller="${lb.controllerName}" action="${lb.actionName}" />
       </g:each>
-      
+
     </div>
 	</body>
 </html>

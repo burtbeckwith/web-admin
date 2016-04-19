@@ -18,8 +18,8 @@ class TUserTRole implements Serializable {
 
 	int hashCode() {
 		def builder = new HashCodeBuilder()
-		if (TUser) builder.append(user.id)
-		if (TRole) builder.append(role.id)
+		if (user) builder.append(user.id)
+		if (role) builder.append(role.id)
 		builder.toHashCode()
 	}
 
@@ -51,7 +51,7 @@ class TUserTRole implements Serializable {
 	}
 
 	static mapping = {
-		user(unique: ['group', 'role'])
+		user(unique: 'role')
 		version false
 		cache true
 	}

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
     <head>
         <meta name="layout" content="admin"/>
@@ -6,7 +5,7 @@
         <link href="http://cdn.bootcss.com/bootstrap-tokenfield/0.12.0/css/bootstrap-tokenfield.min.css" rel="stylesheet">
     </head>
     <body subtitle="用户信息">
-        
+
         <div class="row">
             <div class="col-md-6">
 
@@ -14,13 +13,13 @@
                     <!-- form start -->
                     <form name="userForm" id="userForm" action="${request.contextPath}/user/userSave" method="POST">
                         <div class="box-body">
-                            
+
                             <input type="hidden" name="id" id="userId" value="${user?.id}" />
 
                             <div class="form-group">
                                 <label class="control-label">
                                     <div style="overflow:hidden;width: 100px;height: 20px;">
-                                    
+
                                     </div>
                                 </label>
                                 <div >
@@ -84,27 +83,27 @@
 
         <asset:javascript src="admin/jquery.form.min.js" />
         <asset:javascript src="openapi/openapi-upload.js" />
-                
+
         <script src="http://cdn.bootcss.com/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.min.js"></script>
         <script type="text/javascript">
-            
+
 
 
             $('.tokenfield').tokenfield();
-            
+
             $('.url_input').click(function() {
                 $('.url_input').toggleClass('hide');
                 $('.url_input').toggleClass('');
-                
+
                 var $input = $('.url_input').parent().parent().find('input');
-                
+
                 if($input.attr('disabled')) $input.removeAttr('disabled');
                 else $input.attr('disabled','disabled');
             });
 
 
             $(document).ready(function() {
-                
+
                 $(".uploadBtn").each(function(){
                     new OpenApiUpload(this, function(dom, fileUrl) {
                         $(dom).find('img').attr('src', fileUrl);
@@ -122,9 +121,9 @@
                         beforeSubmit : function(arr, $form, options) {
 
                         cleanFormErrors();
-                        
+
                         var bool = true;
-                        
+
                         var userId = $("#userId").val();
                         var password = $.trim($("#password").val());
                         var email    = $.trim($("#email").val());
@@ -133,9 +132,9 @@
                            showFormErrors($("#email"),"邮箱不能为空!!!");
                             bool = false;
                         }
-                       
+
                         if(bool){
-                            
+
                             $("div.subBtn").find("button").each(function (){
                                 $(this).attr("disabled","disabled");
                                 $(this).addClass("disabled");
@@ -160,7 +159,7 @@
                             abox("error","操作失败！");
                        }
                     }
-                }; 
+                };
                 $('#userForm').ajaxForm(options);
             }
 
